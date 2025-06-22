@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Food, Consume
 
 def index(request):
@@ -16,3 +16,10 @@ def index(request):
         'foods': foods,
         'consume_food': consume_food
     })
+
+def delete_consume(request, id):
+    consume_food = get_object_or_404(Consume, id=id, user=request.user)
+    if request.method == 'POST':
+        consume_food.delete()
+        return redirect('/')
+    return render(request, 'tracker/delete.html', {'consume_food': consume_food})

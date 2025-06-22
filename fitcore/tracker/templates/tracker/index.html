@@ -198,6 +198,7 @@
                 <th>Protein (g)</th>
                 <th>Fats (g)</th>
                 <th>Calories (kcal)</th>
+                <th>Remove</th>
             </tr>
         </thead>
             <tbody>
@@ -208,6 +209,7 @@
                 <td>{{ c.food_consume.protein }}</td>
             <td>{{ c.food_consume.fats }}</td>
             <td>{{ c.food_consume.calories }}</td>
+            <td><a class="btn custom-btn" href="{% url 'delete' c.id %}">Remove</a></td>
         </tr>
         {% endfor %}
         <tr>
